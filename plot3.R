@@ -1,4 +1,4 @@
-
+# the code assumes that the household_power_consumption.txt file is present in the current working directory
 # read temp file if it exists. This file was created by prgramatically containing all the data needed in correct format
 if(!file.exists("temp_plot_data.txt")) {
         full_data_file <- read.table("household_power_consumption.txt", na.strings = "?", sep=";" ,colClasses = c("character", "character", "numeric", "numeric", "numeric", "numeric", "numeric", "numeric", "numeric"), header = TRUE)

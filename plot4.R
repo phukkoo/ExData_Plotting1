@@ -12,10 +12,10 @@ if(!file.exists("temp_plot_data.txt")) {
 } else {
 }        data_file <- read.table("temp_plot_data.txt", na.strings = "?", sep=" " ,colClasses = c("character", "character", "numeric", "numeric", "numeric", "numeric", "numeric", "numeric", "numeric", "POSIXct"), header = TRUE)
 
-#plot 3 consist of 4 plots arranges in a 2 X 2 matrix format
+#plot 4 consist of 4 plots arranges in a 2 X 2 matrix format
 #open png file device
 png(filename = "plot4.png",width = 480, height = 480, units = "px")
-#in order to arrange  in a 2 X 2 matrix formay
+#in order to arrange  in a 2 X 2 matrix format
 par(mfrow = c(2, 2)) 
 # then we create the  4 desired plots 
 with(data_file, {

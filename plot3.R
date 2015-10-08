@@ -14,14 +14,15 @@ if(!file.exists("temp_plot_data.txt")) {
 }        data_file <- read.table("temp_plot_data.txt", na.strings = "?", sep=" " ,colClasses = c("character", "character", "numeric", "numeric", "numeric", "numeric", "numeric", "numeric", "numeric", "POSIXct"), header = TRUE)
 
 
-# plot 3
-
+#plot 3 of datetime against sub_metering types 1,2,3
+#open png file device
 png(filename = "plot3.png",width = 480, height = 480, units = "px")
 with(data_file, plot(datetime, Sub_metering_1, type = "n", ylim = range(c(data_file$Sub_metering_1, data_file$Sub_metering_2, data_file$Sub_metering_3) ) ,ylab = " Energy sub metering", xlab = ""))
 with(data_file, lines(datetime, Sub_metering_1, col = "black"))
 with(data_file, lines(datetime, Sub_metering_2, col = "red"))
 with(data_file, lines(datetime, Sub_metering_3, col = "blue"))
 legend("topright", lty = "solid", col = c("black", "blue", "red"), legend = c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3")) 
+#close the device file
 dev.off()
-# write temp file so we do not need to read the complete file again
+# write required data frame  into temp file so we do not need to read the complete file again
 write.table(data_file, "temp_plot_data.txt", row.name=FALSE)

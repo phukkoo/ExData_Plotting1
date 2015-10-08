@@ -13,10 +13,12 @@ if(!file.exists("temp_plot_data.txt")) {
         
 }        data_file <- read.table("temp_plot_data.txt", na.strings = "?", sep=" " ,colClasses = c("character", "character", "numeric", "numeric", "numeric", "numeric", "numeric", "numeric", "numeric", "POSIXct"), header = TRUE)
 
-# plot 1 histogram
+# plot 1 histogram of the Global active power
+#open png file device
 png(filename = "plot1.png",width = 480, height = 480, units = "px")
 hist(data_file$Global_active_power, col = "red",main = " Global Active Power", xlab = " Global Active Power ( kilowatts)", ylab = "Frequency" )
 
+#close the device file
 dev.off()
-# write temp file so we do not need to read the complete file again
+# write required data frame  into temp file so we do not need to read the complete file again
 write.table(data_file, "temp_plot_data.txt", row.name=FALSE)

@@ -12,9 +12,12 @@ if(!file.exists("temp_plot_data.txt")) {
 } else {
 }        data_file <- read.table("temp_plot_data.txt", na.strings = "?", sep=" " ,colClasses = c("character", "character", "numeric", "numeric", "numeric", "numeric", "numeric", "numeric", "numeric", "POSIXct"), header = TRUE)
 
-# plot 4
+#plot 3 consist of 4 plots arranges in a 2 X 2 matrix format
+#open png file device
 png(filename = "plot4.png",width = 480, height = 480, units = "px")
+#in order to arrange  in a 2 X 2 matrix formay
 par(mfrow = c(2, 2)) 
+# then we create the  4 desired plots 
 with(data_file, {
         plot(datetime, Global_active_power, type="l", ylab = " Global Active Power", xlab ="")
         plot(datetime, Voltage, type="l", ylab = " Voltage",  xlab = "datetime") 
@@ -26,6 +29,7 @@ with(data_file, {
         plot(datetime, Global_reactive_power, type="l", xlab = "datetime") })
 
 
+#close the device file
 dev.off()
-# write temp file so we do not need to read the complete file again
+# write required data frame  into temp file so we do not need to read the complete file again
 write.table(data_file, "temp_plot_data.txt", row.name=FALSE)
